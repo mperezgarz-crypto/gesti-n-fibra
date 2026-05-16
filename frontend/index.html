@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión Tectel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Registro de Intervenciones</h1>
+
+    <h2>Añadir intervención</h2>
+    <div class="campo">
+        <span>📍</span>
+        <input id="direccion" placeholder="Dirección">
+    </div>
+
+    <div class="campo">
+        <span>🏘️</span>
+        <input id="localidad" placeholder="Localidad">
+    </div>
+
+    <div class="campo">
+        <span>👨‍🔧</span>
+        <input id="tecnico" placeholder="Técnico">
+    </div>
+
+    <div class="campo">
+        <span>📦</span>
+        <input id="cto" placeholder="CTO">
+    </div>
+
+    <div class="campo">
+        <span>🔌</span>
+        <input id="cableado" placeholder="Cableado">
+    </div>
+
+    <div class="campo">
+        <span>📝</span>
+        <textarea id="descripcion" placeholder="Descripción"></textarea>
+    </div>
+    <button onclick="crearIntervencion()">Guardar</button>
+
+    <h2>Buscar por dirección</h2>
+    <input id="busqueda" placeholder="Dirección">
+    <button onclick="buscar()">Buscar</button>
+
+    <ul id="resultados"></ul>
+
+    <script src="app.js"></script>
+</body>
+</html>
