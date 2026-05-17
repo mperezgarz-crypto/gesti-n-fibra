@@ -1,4 +1,4 @@
-const API = "http://localhost:3000";
+const API = "";
 
 async function crearIntervencion() {
 
@@ -8,10 +8,13 @@ async function crearIntervencion() {
     const descripcion = document.getElementById("descripcion").value;
     const cto = document.getElementById("cto").value;
     const cableado = document.getElementById("cableado").value;
+
+    // 📅 Fecha automática
     const fecha = new Date().toLocaleString();
 
-    // 🔴 VALIDACIÓN
+    // 🔴 Validación
     if (!direccion || !localidad || !tecnico || !descripcion || !cto || !cableado) {
+
         alert("Obligatorio rellenar todos los campos");
         return;
     }
@@ -22,19 +25,25 @@ async function crearIntervencion() {
         tecnico,
         descripcion,
         cto,
-        cableado, 
+        cableado,
         fecha
     };
 
-    await fetch(API + "/intervenciones", {
+    // ✅ Guardar intervención
+    await fetch("/intervenciones", {
+
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
         body: JSON.stringify(data)
     });
 
     alert("Guardado correctamente");
 
-    // 🟢 LIMPIAR CAMPOS
+    // 🧹 Limpiar campos
     document.getElementById("direccion").value = "";
     document.getElementById("localidad").value = "";
     document.getElementById("tecnico").value = "";
@@ -47,7 +56,8 @@ async function buscar() {
 
     const direccion = document.getElementById("busqueda").value;
 
-    const res = await fetch(API + `/buscar?direccion=${direccion}`);
+    const res = await fetch(`${API}/buscar?direccion=${direccion}`);
+
     const datos = await res.json();
 
     const lista = document.getElementById("resultados");
@@ -59,6 +69,7 @@ async function buscar() {
         const li = document.createElement("li");
 
         li.innerHTML = `
+
         <div class="card">
 
             <h3>📍 ${i.direccion}</h3>
@@ -76,6 +87,7 @@ async function buscar() {
             <p><strong>📅 Fecha:</strong> ${i.fecha}</p>
 
         </div>
+
         `;
 
         lista.appendChild(li);
